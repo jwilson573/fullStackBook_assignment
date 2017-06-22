@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>id</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Category</th>
+            </tr>
+            {% for item in books %}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.author}}</td>
+                <td>{{item.category}}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+        <form action="/create" method="post">
+            {% csrf_token %}
+            <label>Title:</label>
+            <input type="text" name="title">
+
+            <label>Author:</label>
+            <input type="text" name="author">
+
+            <label>Category:</label>
+            <input type="text" name="category">
+
+            <input type="submit" value="Submit">
+        </form>
+        
+    </body>
+</html>
